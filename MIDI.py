@@ -20,7 +20,7 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def run(self):
         print(self.sender().text())
-        self.sender().test
+        # self.sender().test
 
 
 def except_hook(cls, exception, traceback):
