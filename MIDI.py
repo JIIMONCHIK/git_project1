@@ -16,7 +16,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.start_playing = False
         midi_keyboard_connection(self)  # подключение кнопок MIDI
 
-    def run(self):  # функция
+    def run(self):
         if self.start_playing:
             pause_time = datetime.datetime.now() - self.pause
             print('pause', pause_time.total_seconds())
