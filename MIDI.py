@@ -11,6 +11,8 @@ class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.pause = 0
+        self.start_playing = False
         self.cl_button.pressed.connect(self.run)
         self.cl1_button.pressed.connect(self.run)
         self.dl_button.pressed.connect(self.run)
@@ -64,10 +66,16 @@ class Window(QMainWindow, Ui_MainWindow):
         self.hh_button.released.connect(self.rel)
 
     def run(self):
+        if self.start_playing:
+            pause_time = datetime.datetime.now() - self.pause
+            print('pause', pause_time.total_seconds())
         print(self.sender().text())
         self.sender().time = datetime.datetime.now()
 
     def rel(self):
+        if not self.start_playing:
+            self.start_playing = True
+        self.pause = datetime.datetime.now()
         press_time = datetime.datetime.now() - self.sender().time
         print(press_time.total_seconds())
 
