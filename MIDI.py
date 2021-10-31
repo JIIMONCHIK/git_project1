@@ -4,6 +4,8 @@ import PyQt5
 import datetime
 
 from MidiKeyboardConnection import *
+from KeySoundConnection import *
+from PyQt5 import QtCore, QtMultimedia
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from First import Ui_MainWindow
 
@@ -12,16 +14,21 @@ class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.path = 'C:/Users/ASUS FX505DT/PycharmProjects/git_project1/Piano'
+        self.format = '.m4a'
         self.pause = 0
         self.start_playing = False
         midi_keyboard_connection(self)  # подключение кнопок MIDI
+        key_sound_connection(self, self.path, self.format)
+        self.player = QtMultimedia.QMediaPlayer()
 
     def run(self):
         if self.start_playing:
             pause_time = datetime.datetime.now() - self.pause
             print('pause', pause_time.total_seconds())
-        print(self.sender().text())
         self.sender().time = datetime.datetime.now()
+        self.player.setMedia(self.sender().tone)
+        self.player.play()
 
     def rel(self):
         if not self.start_playing:
@@ -29,6 +36,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.pause = datetime.datetime.now()
         press_time = datetime.datetime.now() - self.sender().time
         print(press_time.total_seconds())
+        self.player.stop()
 
 
 def except_hook(cls, exception, traceback):
