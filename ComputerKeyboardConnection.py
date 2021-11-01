@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 
 def keyboard_pressed(self, event):
     if event.key() == Qt.Key_Q:
-        pass
+        self.cl_button.pressEvent()
     if event.key() == Qt.Key_W:
         print(2)
         self.cl1_button.pressed()
