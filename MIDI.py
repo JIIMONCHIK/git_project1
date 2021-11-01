@@ -43,7 +43,6 @@ class MIDI(QMainWindow, Ui_MainWindow):
         self.player.stop()
 
     def change_sound(self):
-        print(50)
         choose_sound(self)
         key_sound_connection(self, self.path, self.format)
 
