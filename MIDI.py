@@ -48,6 +48,7 @@ class MIDI(QMainWindow, Ui_MainWindow):
 
     # def keyPressEvent(self, event):
     #     надо сделать через словарь или список нот (кнопок-объектов)
+    #     в run добавить значени по умолчанию = self.sender()
     #     keyboard_pressed(self, event)
 
 
