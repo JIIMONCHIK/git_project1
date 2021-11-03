@@ -50,3 +50,29 @@ def midi_keyboard_connection(self):
     self.ah_button.released.connect(self.rel)
     self.ah1_button.released.connect(self.rel)
     self.hh_button.released.connect(self.rel)
+
+    self.cl_button.loop = False
+    self.cl1_button.loop = False
+    self.dl_button.loop = False
+    self.dl1_button.loop = False
+    self.el_button.loop = False
+    self.fl_button.loop = False
+    self.fl1_button.loop = False
+    self.gl_button.loop = False
+    self.gl1_button.loop = False
+    self.al_button.loop = False
+    self.al1_button.loop = False
+    self.hl_button.loop = False
+
+    self.ch_button.loop = False
+    self.ch1_button.loop = False
+    self.dh_button.loop = False
+    self.dh1_button.loop = False
+    self.eh_button.loop = False
+    self.fh_button.loop = False
+    self.fh1_button.loop = False
+    self.gh_button.loop = False
+    self.gh1_button.loop = False
+    self.ah_button.loop = False
+    self.ah1_button.loop = False
+    self.hh_button.loop = False

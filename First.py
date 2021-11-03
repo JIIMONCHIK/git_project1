@@ -229,7 +229,7 @@ class Ui_MainWindow(object):
         self.cl_button.setText(_translate("MainWindow", "Cl"))
         self.gh1_button.setText(_translate("MainWindow", "Gh1"))
         self.al1_button.setText(_translate("MainWindow", "Al1"))
-        self.ch1_button.setText(_translate("MainWindow", "Сh1"))
+        self.ch1_button.setText(_translate("MainWindow", "Ch1"))
         self.change_button.setText(_translate("MainWindow", "Change sound"))
         self.record_button.setText(_translate("MainWindow", "Record"))
         self.convert_button.setText(_translate("MainWindow", "Convert"))

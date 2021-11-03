@@ -9,6 +9,7 @@ from ChooseSound import *
 from DatabaseCreation import *
 from ToolKeysConnection import *
 from DatabaseShow import *
+from MusicFileBuild import *
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtMultimedia
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
@@ -55,12 +56,10 @@ class MIDI(QMainWindow, Ui_MainWindow):
         choose_sound(self)
         key_sound_connection(self, self.path, self.format)
 
-    # def keyPressEvent(self, event):
-    #     keyboard_pressed(self, event)
-
     def record(self):
         if self.rec:
-            name = self.choose_name()
+            name = self.choose_name('.db')
+            self.rec = False
             if name:
                 database_creation(name)
                 for i in range(len(self.seq)):
@@ -71,12 +70,21 @@ class MIDI(QMainWindow, Ui_MainWindow):
             self.start_playing = False
             self.rec = True
 
-    def choose_name(self):
+    def choose_name(self, format):
         name, ok_pressed = QInputDialog.getText(self, "Введите имя файла",
                                                 'Введите желаемое имя файла')
         if ok_pressed:
-            return name + '.db'
+            return name + format
         return False
+
+    def convert(self):
+        file_name = QFileDialog.getOpenFileName(self, 'Выбрать файл', './')[0]
+        name = self.choose_name('.wav')
+        if name:
+            build_music_file(self, file_name, name)
+
+    # def keyPressEvent(self, event):
+    #     keyboard_pressed(self, event)
 
     # def keyReleaseEvent(self, event):
     #     keyboard_released(self, event)
