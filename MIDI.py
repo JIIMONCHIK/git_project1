@@ -8,6 +8,7 @@ from ComputerKeyboardConnection import *
 from ChooseSound import *
 from DatabaseCreation import *
 from ToolKeysConnection import *
+from DatabaseShow import *
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtMultimedia
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
@@ -64,6 +65,7 @@ class MIDI(QMainWindow, Ui_MainWindow):
                 database_creation(name)
                 for i in range(len(self.seq)):
                     database_insert(name, self.seq[i])
+                show_database(self, name)
         else:
             self.seq = []
             self.start_playing = False

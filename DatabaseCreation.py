@@ -20,8 +20,6 @@ def database_insert(name, elem):
 
     cur = con.cursor()
 
-    print(elem)
-
     sqlite_insert_query = f"""INSERT INTO record
     (note,time)
     VALUES
