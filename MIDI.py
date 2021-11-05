@@ -58,6 +58,7 @@ class MIDI(QMainWindow, Ui_MainWindow):
 
     def record(self):
         if self.rec:
+            self.record_button.setStyleSheet('background-color: rgb(255, 184, 166)')
             name = self.choose_name('.db')
             self.rec = False
             if name:
@@ -66,6 +67,7 @@ class MIDI(QMainWindow, Ui_MainWindow):
                     database_insert(name, self.seq[i])
                 show_database(self, name)
         else:
+            self.record_button.setStyleSheet('background-color: rgb(255, 50, 50)')
             self.seq = []
             self.start_playing = False
             self.rec = True
