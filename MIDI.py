@@ -80,16 +80,15 @@ class MIDI(QMainWindow, Ui_MainWindow):
         return False
 
     def convert(self):
-        file_name = QFileDialog.getOpenFileName(self, 'Выбрать файл', './')[0]
-        name = self.choose_name('.wav')
-        if name:
-            build_music_file(self, file_name, name)
-
-    # def keyPressEvent(self, event):
-    #     keyboard_pressed(self, event)
-
-    # def keyReleaseEvent(self, event):
-    #     keyboard_released(self, event)
+        file_name = QFileDialog.getOpenFileName(self, 'Выбрать файл', './',
+                                                'База данных (*.db)')[0]
+        format, ok_pressed = QInputDialog.getItem(
+            self, "Выберите формат", "Выберите формат файла",
+            ('.wav', '.flac', '.mp3', '.aac'), 0, False)
+        if ok_pressed:
+            name = self.choose_name(format)
+            if name:
+                build_music_file(self, file_name, name)
 
 
 def except_hook(cls, exception, traceback):

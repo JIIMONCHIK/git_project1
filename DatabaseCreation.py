@@ -8,8 +8,8 @@ def database_creation(name):
 
     result = cur.execute("""CREATE TABLE IF NOT EXISTS record (
         id INTEGER PRIMARY KEY,
-	    note TEXT,
-	    time INTEGER
+        note TEXT,
+        time INTEGER
     )""")
 
     con.close()
